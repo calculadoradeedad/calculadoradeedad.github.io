@@ -7,20 +7,25 @@ function calcularEdad() {
 
     let fechaNacimiento = new Date(dob);
     let hoy = new Date();
-    
-    let años = hoy.getFullYear() - fechaNacimiento.getFullYear();
-    let meses = hoy.getMonth() - fechaNacimiento.getMonth();
-    let días = hoy.getDate() - fechaNacimiento.getDate();
-    
-    if (días < 0) {
-        meses--;
-        días += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+
+    if (fechaNacimiento > hoy) {
+        alert("La fecha de nacimiento no puede ser en el futuro.");
+        return;
     }
-    
+
+    let aÃ±os = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    let meses = hoy.getMonth() - fechaNacimiento.getMonth();
+    let dÃ­as = hoy.getDate() - fechaNacimiento.getDate();
+
+    if (dÃ­as < 0) {
+        meses--;
+        dÃ­as += new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+    }
+
     if (meses < 0) {
-        años--;
+        aÃ±os--;
         meses += 12;
     }
 
-    document.getElementById('resultado').innerHTML = 'Tienes ' + años + ' años, ' + meses + ' meses, y ' + días + ' días.';
+    document.getElementById('resultado').innerHTML = 'Tienes ' + aÃ±os + ' aÃ±os, ' + meses + ' meses, y ' + dÃ­as + ' dÃ­as.';
 }
